@@ -1,6 +1,3 @@
-package Lab8;
-
-
 public abstract class SkipList<T extends Comparable<T>> {
     /** Static class to contain the data and the links */
     static class SkipListNode<T> {
@@ -12,6 +9,7 @@ public abstract class SkipList<T extends Comparable<T>> {
             this.forward = (SkipListNode<T>[]) new SkipListNode[level];
         }
     }
+
     private static final int MAX_LEVEL = 3; // Number of levels in the skip list
     private int level; // Current level of the skip list
     private SkipListNode<T> header; // Header node
@@ -21,9 +19,21 @@ public abstract class SkipList<T extends Comparable<T>> {
         this.header = new SkipListNode<>(null, MAX_LEVEL);
     }
 
-    
-    public abstract void insert(T value);
-    public abstract boolean contains(T value);
-    public abstract boolean delete(T value);
+    protected int getLevel() {
+        return level;
+    }
 
+    protected void setLevel(int newLevel) {
+        this.level = newLevel;
+    }
+
+    protected SkipListNode<T> getHeader() {
+        return header;
+    }
+
+    public abstract void insert(T value);
+
+    public abstract boolean contains(T value);
+
+    public abstract boolean delete(T value);
 }
