@@ -12,6 +12,7 @@ public abstract class SkipList<T extends Comparable<T>> {
             this.forward = (SkipListNode<T>[]) new SkipListNode[level];
         }
     }
+    
     private static final int MAX_LEVEL = 3; // Number of levels in the skip list
     private int level; // Current level of the skip list
     private SkipListNode<T> header; // Header node
@@ -24,6 +25,6 @@ public abstract class SkipList<T extends Comparable<T>> {
     
     public abstract void insert(T value);
     public abstract boolean contains(T value);
-    public abstract boolean delete(T value);
+    public abstract boolean delete(T value, SkipListNode<T> node, int level);
 
 }
